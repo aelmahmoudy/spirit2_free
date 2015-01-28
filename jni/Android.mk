@@ -55,3 +55,5 @@ include $(BUILD_SHARED_LIBRARY)
 #LOCAL_SRC_FILES := libbt-hci.so
 #include $(PREBUILT_SHARED_LIBRARY)
 
+all:
+	$(call host-mv, ${NDK_APP_DST_DIR}/s2d, ${NDK_APP_DST_DIR}/libs2d.so)
