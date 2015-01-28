@@ -55,5 +55,7 @@ include $(BUILD_SHARED_LIBRARY)
 #LOCAL_SRC_FILES := libbt-hci.so
 #include $(PREBUILT_SHARED_LIBRARY)
 
-all:
-	$(call host-mv, ${NDK_APP_DST_DIR}/s2d, ${NDK_APP_DST_DIR}/libs2d.so)
+$(NDK_APP_LIBS_OUT)/%/libs2d.so: $(NDK_APP_LIBS_OUT)/%/s2d
+		$(call host-mv, $<, $@)
+
+all: $(foreach _abi,$(APP_ABI),$(NDK_APP_LIBS_OUT)/$(_abi)/libs2d.so)
